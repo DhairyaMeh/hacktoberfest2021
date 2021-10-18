@@ -1,24 +1,36 @@
 #include<stdio.h>
+#define MAXSIZE 50
+void bubble(int x[], int n)
+{
+	int i,j,temp;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<n-1;j++)
+		{
+			if(x[j] > x[j+1])
+			{
+				temp = x[j];
+				x[j] = x[j+1];
+				x[j+1] = temp;
+			}
+		}
+	}
+}
 int main()
 {
-   int n, temp, i, j;
-   printf ("Enter No of elements in the array \n");
-   scanf("%d",&n);
-   int number[n];
-   printf ("Enter the elements of array \n");
-   for(int i=0;i<n;i++)
-    scanf("%d",&number[i]);
-   for(i=n-2;i>=0;i--){
-      for(j=0;j<=i;j++){
-        if(number[j]>number[j+1]){
-           temp=number[j];
-           number[j]=number[j+1];
-           number[j+1]=temp;
-        }
-      }
-   }
-   printf("Sorted elements: ");
-   for(i=0;i<n;i++)
-      printf(" %d",number[i]);
-   return 0;
+	int x[MAXSIZE],n,i;
+	printf("enter the number of elements");
+	scanf("%d",&n);
+	printf("\n Enter the elements:");
+	for(i=0; i<n; i++)
+	{
+		scanf("%d",&x[i]);
+	}
+	bubble(x,n);
+	printf("\n The sorted output:\n");
+	for(i=0;i<n;i++)
+	{
+		printf("\n%d",x[i]);
+	}
+	return 0;
 }
