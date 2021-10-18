@@ -1,43 +1,33 @@
-// C program to implement iterative Binary Search 
-#include <stdio.h> 
-  
-// A iterative binary search function. It returns 
-// location of x in given array arr[l..r] if present, 
-// otherwise -1 
-int binarySearch(int arr[], int l, int r, int x) 
-{ 
-    while (l <= r) { 
-        int m = l + (r - l) / 2; 
-  
-        // Check if x is present at mid 
-        if (arr[m] == x) 
-            return m; 
-  
-        // If x greater, ignore left half 
-        if (arr[m] < x) 
-            l = m + 1; 
-  
-        // If x is smaller, ignore right half 
-        else
-            r = m - 1; 
-    } 
-  
-    // if we reach here, then element was 
-    // not present 
-    return -1; 
-} 
-  
-int main(void) 
-{ 
-    int arr[] = { 2, 3, 4, 10, 40 }; 
-    int n = sizeof(arr) / sizeof(arr[0]); 
-    int x = 10; 
-  //Calling the binarySearch function
-    int result = binarySearch(arr, 0, n - 1, x); 
-    (result == -1) ? printf("Element is not present"
-                            " in array") 
-                   : printf("Element is present at "
-                            "index %d", 
-                            result); 
-    return 0; 
-} 
+#include <stdio.h>
+int main()
+{
+  int c, first, last, middle, n, search, array[100];
+  printf("Enter number of elements\n");
+  scanf("%d", &n);
+
+  printf("Enter %d integers\n", n);
+  for (c = 0; c < n; c++)
+    scanf("%d", &array[c]);
+
+  printf("Enter value to find\n");
+  scanf("%d", &search);
+  first = 0;
+  last = n - 1;
+  middle = (first+last)/2;
+
+  while (first <= last) {
+    if (array[middle] < search)
+      first = middle + 1;
+    else if (array[middle] == search) {
+      printf("%d found at location %d.\n", search, middle+1);
+      break;
+    }
+    else
+      last = middle - 1;
+    middle = (first + last)/2;
+  }
+  if (first > last)
+    printf("Not found! %d isn't present in the list.\n", search);
+
+  return 0;
+}
